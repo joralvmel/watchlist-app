@@ -35,12 +35,7 @@ app.get("/tvshows", (req, res) => {
   res.render("tvshows.ejs", { tasks: tvshows });
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
-
-// Handle adding tasks
+// Handle adding tasks (Server-Side)
 app.post("/addTask", (req, res) => {
   const newTaskName = req.body.task;
   const newTask = { name: newTaskName, completed: false };
@@ -58,7 +53,7 @@ app.post("/addTask", (req, res) => {
   }
 });
 
-// Handle deleting tasks
+// Handle deleting tasks (Server-Side)
 app.post("/deleteTask", (req, res) => {
   const taskId = req.body.taskId;
 
@@ -85,13 +80,13 @@ app.post("/deleteTask", (req, res) => {
   }
 });
 
-// Handle marking tasks as completed
+// Handle marking tasks as completed (Server-Side)
 app.post("/completeTask", (req, res) => {
   const taskId = req.body.taskId;
-  const isCompleted = req.body.isCompleted === "true"; // Convert the string to a boolean
+  const isCompleted = req.body.isCompleted === "true";
 
   // Determine whether to mark as completed in movies or tvshows based on the route
-  if (req.headers.referer && req.headers.referer.includes("/movies")) {
+  if (req.body.isMovie === "true") {
     // Handle marking as completed in movies array
     if (!isNaN(taskId) && taskId >= 0 && taskId < movies.length) {
       movies[taskId].completed = isCompleted;
@@ -99,7 +94,7 @@ app.post("/completeTask", (req, res) => {
     } else {
       res.sendStatus(400);
     }
-  } else if (req.headers.referer && req.headers.referer.includes("/tvshows")) {
+  } else {
     // Handle marking as completed in tvshows array
     if (!isNaN(taskId) && taskId >= 0 && taskId < tvshows.length) {
       tvshows[taskId].completed = isCompleted;
@@ -107,8 +102,10 @@ app.post("/completeTask", (req, res) => {
     } else {
       res.sendStatus(400);
     }
-  } else {
-    // Handle other routes or return an error
-    res.sendStatus(400);
   }
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
