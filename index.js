@@ -11,21 +11,36 @@ const __dirname = path.dirname(__filename);
 const movies = [];
 const tvshows = [];
 
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware to set the currentPage variable
+// Extract the current page from the request path
 app.use((req, res, next) => {
-  res.locals.currentPage = req.path.substring(1); // Extract the current page from the request path
+  res.locals.currentPage = req.path.substring(1); 
   next();
 });
 
+// Routes
 app.get("/", (req, res) => {
-  // Render the index page with an empty array (common tasks or no tasks)
-  res.render("index.ejs", { tasks: [] });
+  res.render("index.ejs");
 });
 
+app.get("/movies", (req, res) => {
+  res.render("movies.ejs", { tasks: movies });
+});
+
+app.get("/tvshows", (req, res) => {
+  res.render("tvshows.ejs", { tasks: tvshows });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+// Handle adding tasks
 app.post("/addTask", (req, res) => {
   const newTaskName = req.body.task;
   const newTask = { name: newTaskName, completed: false };
@@ -43,6 +58,7 @@ app.post("/addTask", (req, res) => {
   }
 });
 
+// Handle deleting tasks
 app.post("/deleteTask", (req, res) => {
   const taskId = req.body.taskId;
 
@@ -69,6 +85,7 @@ app.post("/deleteTask", (req, res) => {
   }
 });
 
+// Handle marking tasks as completed
 app.post("/completeTask", (req, res) => {
   const taskId = req.body.taskId;
   const isCompleted = req.body.isCompleted === "true"; // Convert the string to a boolean
@@ -94,19 +111,4 @@ app.post("/completeTask", (req, res) => {
     // Handle other routes or return an error
     res.sendStatus(400);
   }
-});
-
-
-
-app.get("/movies", (req, res) => {
-  res.render("movies.ejs", { tasks: movies });
-});
-
-app.get("/tvshows", (req, res) => {
-  res.render("tvshows.ejs", { tasks: tvshows });
-});
-
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
 });

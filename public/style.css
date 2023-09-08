@@ -1,8 +1,15 @@
+/* Footer styles */
+footer {
+  font-size: 14px;
+}
+
+/* To-Do List navigation styles */
 .todo-nav {
   margin-top: 10px;
   border-bottom: 1px solid #535353;
 }
 
+/* To-Do List styles */
 .todo-list {
   margin: 0;
 }
@@ -14,18 +21,20 @@
   border-bottom: 1px solid #535353;
 }
 
+/* Card styles */
 .card {
   padding: 25px;
   margin-bottom: 20px;
-  height: 72vh;
-  max-height: calc(100vh - 100px); 
-  overflow-y: auto; 
+  height: 70vh;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
   border: initial;
   background: #2b3035;
   border-radius: calc(1em - 1px);
   box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
+/* Delete button styles */
 .delete-todo-item {
   position: absolute;
   top: 50%;
@@ -44,6 +53,7 @@
   background-color: transparent;
 }
 
+/* Checkbox styles */
 input[type="checkbox"] {
   display: none;
   visibility: hidden;
@@ -55,13 +65,14 @@ input[type="checkbox"] {
   user-select: none;
   cursor: pointer;
   margin-right: 10px;
-  
 }
+
 .cbx span {
   display: inline-block;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
 }
+
 .cbx span:first-child {
   position: relative;
   width: 18px;
@@ -72,6 +83,7 @@ input[type="checkbox"] {
   border: 1px solid #9098a9;
   transition: all 0.2s ease;
 }
+
 .cbx span:first-child svg {
   position: absolute;
   top: 3px;
@@ -87,6 +99,7 @@ input[type="checkbox"] {
   transition-delay: 0.1s;
   transform: translate3d(0, 0, 0);
 }
+
 .cbx span:first-child:before {
   content: "";
   width: 100%;
@@ -97,75 +110,78 @@ input[type="checkbox"] {
   opacity: 1;
   border-radius: 50%;
 }
+
 .cbx span:last-child {
   padding-left: 8px;
 }
+
 .cbx:hover span:first-child {
   border-color: #506eec;
 }
 
+/* Checkbox checked styles */
 .inp-cbx:checked + .cbx span:first-child {
   background: #506eec;
   border-color: #506eec;
   animation: wave-46 0.4s ease;
 }
+
 .inp-cbx:checked + .cbx span:first-child svg {
   stroke-dashoffset: 0;
 }
+
 .inp-cbx:checked + .cbx span:first-child:before {
   transform: scale(3.5);
   opacity: 0;
   transition: all 0.6s ease;
 }
 
+/* Completed task text styles */
 .task-name.completed {
   text-decoration: line-through;
 }
 
+/* Icon styles */
 .icon {
   height: 25px;
-  filter: invert(100%) ; 
+  filter: invert(100%);
 }
 
+/* Active navigation link styles */
 .active-link {
-  font-weight: bold; 
+  font-weight: bold;
   color: white;
 }
 
-.card-header{
+/* Card header styles */
+.card-header {
   background: #2b3035;
 }
 
+/* Navbar link styles */
 .navbar .navbar-nav .nav-item .nav-link {
-  font-weight: bold; /* Make the text bold */
-  padding: 0.5rem 1rem; /* Adjust padding as needed */
-  border-radius: 0.25rem; /* Add a bit of border-radius for rounded edges */
-  transition: background-color 0.3s ease; /* Add a smooth transition effect for background color */
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
 }
 
-/* Style the buttons on hover */
 .navbar .navbar-nav .nav-item .nav-link:hover {
-  background-color: #4e4e4e; /* Change the background color on hover */
-  color: #FFFFFF; /* Change the text color on hover */
+  background-color: #4e4e4e;
+  color: #ffffff;
 }
 
-
+/* Primary button styles */
 .btn-primary {
   background-color: #535353;
-  border-color: #535353; 
+  border-color: #535353;
   color: #fff;
   font-weight: bold;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; 
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-/* Style Bootstrap primary buttons on hover */
 .btn-primary:hover {
   background-color: #3b64e6;
   border-color: #3b64e6;
-  color: #fff; 
-}
-
-.btn-primary:active, .btn-primary:focus {
-  background-color: #2b4dbb; 
-  border-color: #2b4dbb; 
+  color: #fff;
 }
