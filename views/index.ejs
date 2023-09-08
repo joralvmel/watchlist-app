@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container py-4 my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="jumbotron">
+                <h1 class="text-center">Welcome to My Watchlist Tracker</h1>
+                <p class="lead text-center">Keep track of your favorite movies and TV shows with ease!</p>
+                <hr class="my-4">
+                <p>Follow the steps below to get started:</p>
+                <ul class="text-left">
+                    <li>Click on "Movies" or "TV Shows" in the navigation menu to go to the respective pages.</li>
+                    <li>On the movies or TV shows page, you can see your existing list of media.</li>
+                    <li>To add a new movie or TV show, use the input field under the respective page.</li>
+                    <li>Type the name of the movie or TV show and click "Add".</li>
+                    <li>Your new media will be added to the list, and you can mark it as completed when you've watched it.</li>
+                    <li>Enjoy keeping track of your media!</li>
+                </ul>
+                <hr class="my-4">
+                <p class="lead text-center" >
+                    <a class="btn btn-primary btn-lg" href="/movies" role="button">Go to Movies</a>
+                    <a class="btn btn-primary btn-lg" href="/tvshows" role="button">Go to TV Shows</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
